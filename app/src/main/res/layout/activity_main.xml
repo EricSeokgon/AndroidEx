@@ -3,41 +3,62 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ff0000"
-    android:gravity="top"
     android:orientation="vertical"
+    android:weightSum="1"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:layout_marginLeft="50px"
-        android:paddingLeft="100px"
-        android:text="B01" />
+    <!--    <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="50px"
+            android:paddingLeft="100px"
+            android:text="B01" />
 
-    <TextView
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#0000ff"
+            android:padding="20px"
+            android:text="ABCDEFG"
+            android:textColor="#ffffff"
+            android:textSize="20px"
+            android:textStyle="bold|italic" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="please input User Id"
+            android:textStyle="bold|italic" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="please input User Pw"
+            android:password="true"
+            android:textStyle="bold|italic" />-->
+
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#0000ff"
-        android:padding="20px"
-        android:text="ABCDEFG"
-        android:textColor="#ffffff"
-        android:textSize="20px"
-        android:textStyle="bold|italic" />
+        android:src="@drawable/sba_img" />
 
-    <EditText
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="please input User Id"
-        android:textStyle="bold|italic" />
+        android:adjustViewBounds="true"
+        android:background="#ff0000"
+        android:maxHeight="100px"
+        android:maxWidth="50px"
+        android:src="@drawable/sba_img" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="please input User Pw"
-        android:password="true"
-        android:textStyle="bold|italic" />
+    <ImageView
+        android:layout_width="200px"
+        android:layout_height="200px"
+        android:background="#ff0000"
+        android:scaleType="matrix"
+        android:src="@drawable/sba_img" />
 
 
 </LinearLayout>
