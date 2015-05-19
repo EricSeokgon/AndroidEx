@@ -2,43 +2,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity"
     android:background="#ff0000"
-    android:weightSum="1">
+    android:gravity="top"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="1 Button"
-        android:background="#00ff00" />
+        android:layout_gravity="left"
+        android:layout_marginLeft="50px"
+        android:paddingLeft="100px"
+        android:text="B01" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="2 Button"
-        android:background="#0000ff" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="3 Button" />
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#00ffff">
-
-    <Button
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/button4"
-        android:background="#0000ff" />
-    </LinearLayout>
+        android:background="#0000ff"
+        android:padding="20px"
+        android:text="ABCDEFG"
+        android:textColor="#ffffff"
+        android:textSize="20px"
+        android:textStyle="bold|italic" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="please input User Id"
+        android:textStyle="bold|italic" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="please input User Pw"
+        android:password="true"
+        android:textStyle="bold|italic" />
+
 
 </LinearLayout>
