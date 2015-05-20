@@ -19,15 +19,20 @@ public class CustomView extends View {
     protected void onDraw(Canvas canvas) {
         //super.onDraw(canvas);
 
-        canvas.drawColor(Color.GREEN);
+        canvas.drawColor(Color.GRAY);
 
         Paint paint = new Paint();
-        paint.setColor(Color.BLUE);
-        canvas.drawCircle(100, 100, 50, paint);
-
         paint.setColor(Color.RED);
+        canvas.drawPoint(110, 110, paint);
 
-        canvas.drawCircle(200, 200, 70, paint);
+        paint.setColor(Color.YELLOW);
+        canvas.drawLine(50, 50, 100, 100, paint);
+
+        paint.setColor(Color.BLUE);
+        canvas.drawRect(150, 10, 250, 150, paint);
+
+        paint.setColor(0x5000ffff);
+        canvas.drawCircle(200, 200, 100, paint);
 
     }
 }
