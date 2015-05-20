@@ -1,0 +1,57 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.hadeslee.androidex.TableLayoutActivity">
+
+    <TableRow>
+
+        <TextView
+            android:padding="20px"
+            android:text="아빠" />
+
+        <TextView
+            android:background="#5000ff00"
+            android:padding="20px"
+            android:text="엄마" />
+
+        <TextView
+            android:padding="20px"
+            android:text="누나" />
+
+        <TextView
+            android:background="#5000ff00"
+            android:padding="20px"
+            android:text="동생" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+
+            android:padding="20px"
+            android:text="70" />
+
+        <TextView
+            android:background="#5000ff00"
+            android:padding="20px"
+            android:text="65" />
+
+        <TextView
+
+            android:padding="20px"
+            android:text="40" />
+
+        <TextView
+            android:background="#5000ff00"
+            android:padding="20px"
+            android:text="35" />
+    </TableRow>
+
+</TableLayout>
+
+
+
+
+
