@@ -14,10 +14,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#0000ff"
-            android:gravity="right"
+            android:gravity="right|center_vertical"
             android:text="123,456,789"
             android:textColor="#ffffff"
-            android:textSize="30px"
+            android:textSize="50px"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -34,6 +34,7 @@
             android:text="CE" />
 
         <Button
+            android:id="@+id/bt_ce"
             android:layout_width="0px"
             android:layout_height="wrap_content"
             android:layout_weight="1"
