@@ -15,9 +15,10 @@ import java.util.ArrayList;
 
 public class MainActivity extends ActionBarActivity {
 
-    ArrayList<String> arrayList = null;
-    ArrayAdapter<CharSequence> adapter = null;
-    ListView lv = null;
+    private ArrayList<Weather> arrayList = null;
+    private WeatherAdapter adapter = null;
+    // ArrayAdapter<CharSequence> adapter = null;
+    private ListView lv = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,15 +50,26 @@ public class MainActivity extends ActionBarActivity {
         lv.setAdapter(adapter);*/
 
         setContentView(R.layout.adapter_layout);
-        adapter = ArrayAdapter.createFromResource(this, R.array.weather, android.R.layout.simple_list_item_checked);
+       // adapter = ArrayAdapter.createFromResource(this, R.array.weather, android.R.layout.simple_list_item_checked);
 
-        lv = (ListView) findViewById(R.id.lv_01);
+        arrayList = new ArrayList<Weather>();
+        arrayList.add(new Weather("월", R.drawable.w_icon_01, "맑음"));
+        arrayList.add(new Weather("화", R.drawable.w_icon_02, "흐림"));
+        arrayList.add(new Weather("수", R.drawable.w_icon_03, "흐림/비"));
+        arrayList.add(new Weather("목", R.drawable.w_icon_04, "비"));
+        arrayList.add(new Weather("금", R.drawable.w_icon_02, "흐림"));
+        arrayList.add(new Weather("토", R.drawable.w_icon_01, "맑음"));
+        arrayList.add(new Weather("일", R.drawable.w_icon_03, "흐림/비"));
+
+        adapter = new WeatherAdapter(MainActivity.this, R.layout.custom_layout, arrayList);
+
+        lv = (ListView) findViewById(R.id.lv_weather);
         lv.setAdapter(adapter);
 
         //lv.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-        lv.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-        lv.setDivider(new ColorDrawable(Color.GREEN));
-        lv.setDividerHeight(3);
+        //lv.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+        //lv.setDivider(new ColorDrawable(Color.GREEN));
+        //lv.setDividerHeight(3);
 
     }
 
