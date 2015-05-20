@@ -4,9 +4,11 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Shader;
 import android.graphics.drawable.BitmapDrawable;
 import android.view.View;
 
@@ -38,15 +40,18 @@ public class CustomView extends View {
         paint.setColor(0x5000ffff);
         canvas.drawCircle(200, 200, 100, paint);*/
 
-        canvas.drawColor(Color.LTGRAY);
-        Paint pint = new Paint();
+        //canvas.drawColor(Color.LTGRAY);
+        Paint paint = new Paint();
+        paint.setAntiAlias(true);
 
  /*       Resources resources = getResources();
         BitmapDrawable bitmapDrawable = (BitmapDrawable) resources.getDrawable(R.drawable.wiz);
         Bitmap bitmap = bitmapDrawable.getBitmap();*/
 
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.wiz);
-        canvas.drawBitmap(bitmap, 5, 5, null);
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.pt);
+        //canvas.drawBitmap(bitmap, 5, 5, null);
+        paint.setShader(new BitmapShader(bitmap, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT));
+        canvas.drawRect(10, 10, 200, 200, paint);
 
     }
 }
