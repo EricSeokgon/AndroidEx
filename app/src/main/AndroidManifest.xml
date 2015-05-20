@@ -20,6 +20,10 @@
             android:name=".RelativeLayoutActivity"
             android:label="@string/title_activity_relative_layout" >
         </activity>
+        <activity
+            android:name=".FrameLayoutActivity"
+            android:label="@string/title_activity_frame_layout" >
+        </activity>
     </application>
 
 </manifest>
