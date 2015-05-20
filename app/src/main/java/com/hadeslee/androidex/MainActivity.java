@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends ActionBarActivity {
 
-    private ArrayList<Weather> arrayList = null;
+    private ArrayList<Weather> data = null;
     private WeatherAdapter adapter = null;
     // ArrayAdapter<CharSequence> adapter = null;
     private ListView lv = null;
@@ -52,16 +52,16 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.adapter_layout);
        // adapter = ArrayAdapter.createFromResource(this, R.array.weather, android.R.layout.simple_list_item_checked);
 
-        arrayList = new ArrayList<Weather>();
-        arrayList.add(new Weather("월", R.drawable.w_icon_01, "맑음"));
-        arrayList.add(new Weather("화", R.drawable.w_icon_02, "흐림"));
-        arrayList.add(new Weather("수", R.drawable.w_icon_03, "흐림/비"));
-        arrayList.add(new Weather("목", R.drawable.w_icon_04, "비"));
-        arrayList.add(new Weather("금", R.drawable.w_icon_02, "흐림"));
-        arrayList.add(new Weather("토", R.drawable.w_icon_01, "맑음"));
-        arrayList.add(new Weather("일", R.drawable.w_icon_03, "흐림/비"));
+        data = new ArrayList<Weather>();
+        data.add(new Weather("월", R.drawable.w_icon_01, "맑음"));
+        data.add(new Weather("화", R.drawable.w_icon_02, "흐림"));
+        data.add(new Weather("수", R.drawable.w_icon_03, "흐림/비"));
+        data.add(new Weather("목", R.drawable.w_icon_04, "비"));
+        data.add(new Weather("금", R.drawable.w_icon_02, "흐림"));
+        data.add(new Weather("토", R.drawable.w_icon_01, "맑음"));
+        data.add(new Weather("일", R.drawable.w_icon_03, "흐림/비"));
 
-        adapter = new WeatherAdapter(MainActivity.this, R.layout.custom_layout, arrayList);
+        adapter = new WeatherAdapter(MainActivity.this, R.layout.custom_layout, data);
 
         lv = (ListView) findViewById(R.id.lv_weather);
         lv.setAdapter(adapter);
