@@ -4,10 +4,18 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 
 public class MainActivity extends ActionBarActivity {
+
+    ArrayList<String> arrayList = null;
+    ArrayAdapter<String> adapter = null;
+    ListView lv = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,12 +25,27 @@ public class MainActivity extends ActionBarActivity {
         //setContentView(R.layout.activity_frame_layout);
         //setContentView(R.layout.activity_table_layout);
         //setContentView(R.layout.calulator_layout);
-
-        CustomView customView = new CustomView(MainActivity.this);
-
-        setContentView(customView);
-
+        //CustomView customView = new CustomView(MainActivity.this);
+        //setContentView(customView);
         //Toast.makeText(MainActivity.this,"First Toast", Toast.LENGTH_SHORT).show();
+
+        setContentView(R.layout.adapter_layout);
+
+        arrayList = new ArrayList<String>();
+        arrayList.add("월");
+        arrayList.add("화");
+        arrayList.add("수");
+        arrayList.add("목");
+        arrayList.add("금");
+        arrayList.add("토");
+        arrayList.add("일");
+
+        adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, arrayList);
+
+        lv = (ListView) findViewById(R.id.lv_01);
+
+        lv.setAdapter(adapter);
+
     }
 
     @Override
