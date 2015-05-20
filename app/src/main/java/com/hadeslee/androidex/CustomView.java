@@ -3,6 +3,7 @@ package com.hadeslee.androidex;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.view.View;
 
 /**
@@ -19,5 +20,14 @@ public class CustomView extends View {
         //super.onDraw(canvas);
 
         canvas.drawColor(Color.GREEN);
+
+        Paint paint = new Paint();
+        paint.setColor(Color.BLUE);
+        canvas.drawCircle(100, 100, 50, paint);
+
+        paint.setColor(Color.RED);
+
+        canvas.drawCircle(200, 200, 70, paint);
+
     }
 }
