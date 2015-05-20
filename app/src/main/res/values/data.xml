@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string-array name="weather">
+        <item>월 : 맑음</item>
+        <item>화 : 흐림</item>
+        <item>수 : 눈/비</item>
+        <item>목 : 화창</item>
+        <item>금 : 구름 많음</item>
+        <item>토 : 비</item>
+        <item>일 : 맑음</item>
+    </string-array>
+</resources>

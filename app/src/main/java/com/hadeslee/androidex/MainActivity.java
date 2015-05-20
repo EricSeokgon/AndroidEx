@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class MainActivity extends ActionBarActivity {
 
     ArrayList<String> arrayList = null;
-    ArrayAdapter<String> adapter = null;
+    ArrayAdapter<CharSequence> adapter = null;
     ListView lv = null;
 
     @Override
@@ -29,7 +29,7 @@ public class MainActivity extends ActionBarActivity {
         //setContentView(customView);
         //Toast.makeText(MainActivity.this,"First Toast", Toast.LENGTH_SHORT).show();
 
-        setContentView(R.layout.adapter_layout);
+       /* setContentView(R.layout.adapter_layout);
 
         arrayList = new ArrayList<String>();
         arrayList.add("월");
@@ -44,6 +44,12 @@ public class MainActivity extends ActionBarActivity {
 
         lv = (ListView) findViewById(R.id.lv_01);
 
+        lv.setAdapter(adapter);*/
+
+        setContentView(R.layout.adapter_layout);
+        adapter = ArrayAdapter.createFromResource(this, R.array.weather, android.R.layout.simple_list_item_1);
+
+        lv = (ListView) findViewById(R.id.lv_01);
         lv.setAdapter(adapter);
 
     }
