@@ -16,9 +16,13 @@ public class MainActivity extends ActionBarActivity {
         //setContentView(R.layout.activity_relative_layout);
         //setContentView(R.layout.activity_frame_layout);
         //setContentView(R.layout.activity_table_layout);
-        setContentView(R.layout.calulator_layout);
+        //setContentView(R.layout.calulator_layout);
 
-        Toast.makeText(MainActivity.this,"First Toast", Toast.LENGTH_SHORT).show();
+        CustomView customView = new CustomView(MainActivity.this);
+
+        setContentView(customView);
+
+        //Toast.makeText(MainActivity.this,"First Toast", Toast.LENGTH_SHORT).show();
     }
 
     @Override

@@ -16,18 +16,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".RelativeLayoutActivity"
-            android:label="@string/title_activity_relative_layout" >
-        </activity>
-        <activity
-            android:name=".FrameLayoutActivity"
-            android:label="@string/title_activity_frame_layout" >
-        </activity>
-        <activity
-            android:name=".TableLayoutActivity"
-            android:label="@string/title_activity_table_layout" >
-        </activity>
     </application>
 
 </manifest>
