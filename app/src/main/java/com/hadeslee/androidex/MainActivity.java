@@ -1,5 +1,7 @@
 package com.hadeslee.androidex;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -47,10 +49,15 @@ public class MainActivity extends ActionBarActivity {
         lv.setAdapter(adapter);*/
 
         setContentView(R.layout.adapter_layout);
-        adapter = ArrayAdapter.createFromResource(this, R.array.weather, android.R.layout.simple_list_item_1);
+        adapter = ArrayAdapter.createFromResource(this, R.array.weather, android.R.layout.simple_list_item_checked);
 
         lv = (ListView) findViewById(R.id.lv_01);
         lv.setAdapter(adapter);
+
+        //lv.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+        lv.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+        lv.setDivider(new ColorDrawable(Color.GREEN));
+        lv.setDividerHeight(3);
 
     }
 
