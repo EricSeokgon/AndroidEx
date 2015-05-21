@@ -1,24 +1,21 @@
 package com.hadeslee.androidex;
 
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.support.v7.app.ActionBarActivity;
+import android.app.ListActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ListActivity {
 
-    private ArrayList<Weather> data = null;
-    private WeatherAdapter adapter = null;
+    ArrayList<String> data = null;
+    ArrayAdapter<String> adapter = null;
+    //private WeatherAdapter adapter = null;
     // ArrayAdapter<CharSequence> adapter = null;
-    private ListView lv = null;
+    //private ListView lv = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,27 +29,28 @@ public class MainActivity extends ActionBarActivity {
         //setContentView(customView);
         //Toast.makeText(MainActivity.this,"First Toast", Toast.LENGTH_SHORT).show();
 
-       /* setContentView(R.layout.adapter_layout);
+        //setContentView(R.layout.adapter_layout);
 
-        arrayList = new ArrayList<String>();
-        arrayList.add("월");
-        arrayList.add("화");
-        arrayList.add("수");
-        arrayList.add("목");
-        arrayList.add("금");
-        arrayList.add("토");
-        arrayList.add("일");
+        data = new ArrayList<String>();
+        data.add("월");
+        data.add("화");
+        data.add("수");
+        data.add("목");
+        data.add("금");
+        data.add("토");
+        data.add("일");
 
-        adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, arrayList);
+        adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, data);
+        setListAdapter(adapter);
 
-        lv = (ListView) findViewById(R.id.lv_01);
+        //lv = (ListView) findViewById(R.id.lv_01);
 
-        lv.setAdapter(adapter);*/
+        //lv.setAdapter(adapter);
 
-        setContentView(R.layout.adapter_layout);
-       // adapter = ArrayAdapter.createFromResource(this, R.array.weather, android.R.layout.simple_list_item_checked);
+        // setContentView(R.layout.adapter_layout);
+        // adapter = ArrayAdapter.createFromResource(this, R.array.weather, android.R.layout.simple_list_item_checked);
 
-        data = new ArrayList<Weather>();
+        /*data = new ArrayList<Weather>();
         data.add(new Weather("월", R.drawable.w_icon_01, "맑음"));
         data.add(new Weather("화", R.drawable.w_icon_02, "흐림"));
         data.add(new Weather("수", R.drawable.w_icon_03, "흐림/비"));
@@ -64,7 +62,7 @@ public class MainActivity extends ActionBarActivity {
         adapter = new WeatherAdapter(MainActivity.this, R.layout.custom_layout, data);
 
         lv = (ListView) findViewById(R.id.lv_weather);
-        lv.setAdapter(adapter);
+        lv.setAdapter(adapter);*/
 
         //lv.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         //lv.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
