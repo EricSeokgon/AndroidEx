@@ -58,7 +58,7 @@
             android:scaleType="matrix"
             android:src="@drawable/sba_img" />-->
 
-
+<!--
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -70,7 +70,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#00ff00"
-        android:padding="10px" />
+        android:padding="10px" />-->
+
+    <GridView
+        android:id="@+id/gv_01"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:numColumns="3"
+        android:padding="10px"
+        android:verticalSpacing="10px"
+        android:horizontalSpacing="10px"
+        android:gravity="center" />
 
 
 </LinearLayout>
