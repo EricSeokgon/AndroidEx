@@ -5,30 +5,39 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 
 public class MainActivity extends Activity {
 
-    private int[] data = {R.drawable.g01, R.drawable.g02, R.drawable.g03, R.drawable.g04, R.drawable.g05,
-            R.drawable.g06, R.drawable.g07, R.drawable.g08, R.drawable.g09, R.drawable.g10,
-            R.drawable.g01, R.drawable.g02, R.drawable.g03, R.drawable.g04, R.drawable.g05,
-            R.drawable.g06, R.drawable.g07, R.drawable.g08, R.drawable.g09, R.drawable.g10,
-            R.drawable.g01, R.drawable.g02, R.drawable.g03, R.drawable.g04, R.drawable.g05,
-            R.drawable.g06, R.drawable.g07, R.drawable.g08, R.drawable.g09, R.drawable.g10
-    };
+    private int[] data = {R.drawable.s01, R.drawable.s02,
+            R.drawable.s03, R.drawable.s04, R.drawable.s05};
+
     private CustomAdapter adapter = null;
-    private GridView gv = null;
+    private GridView gv;
+
+    private LinearLayout ll;
+    private ImageView[] ivs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         adapter = new CustomAdapter(this, data);
-
         gv = (GridView) findViewById(R.id.gv_01);
         gv.setAdapter(adapter);
+
+        ll = (LinearLayout) findViewById(R.id.ll_01);
+        ivs = new ImageView[5];
+
+        for (int i = 0; i < 5; i++) {
+            ivs[i] = new ImageView(this);
+            ivs[i].setImageResource(data[i]);
+            ll.addView(ivs[i]);
+        }
+
 
     }
 
