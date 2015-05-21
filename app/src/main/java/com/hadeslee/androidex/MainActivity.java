@@ -1,21 +1,21 @@
 package com.hadeslee.androidex;
 
-import android.app.ListActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
-import java.util.ArrayList;
 
+public class MainActivity extends Activity {
 
-public class MainActivity extends ListActivity {
-
-    ArrayList<String> data = null;
-    ArrayAdapter<String> adapter = null;
+    //ArrayList<String> data = null;
+    //ArrayAdapter<String> adapter = null;
     //private WeatherAdapter adapter = null;
-    // ArrayAdapter<CharSequence> adapter = null;
     //private ListView lv = null;
+    ArrayAdapter<CharSequence> adapter = null;
+    Spinner spinner = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,19 +30,6 @@ public class MainActivity extends ListActivity {
         //Toast.makeText(MainActivity.this,"First Toast", Toast.LENGTH_SHORT).show();
 
         //setContentView(R.layout.adapter_layout);
-
-        data = new ArrayList<String>();
-        data.add("월");
-        data.add("화");
-        data.add("수");
-        data.add("목");
-        data.add("금");
-        data.add("토");
-        data.add("일");
-
-        adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, data);
-        setListAdapter(adapter);
-
         //lv = (ListView) findViewById(R.id.lv_01);
 
         //lv.setAdapter(adapter);
@@ -68,6 +55,28 @@ public class MainActivity extends ListActivity {
         //lv.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         //lv.setDivider(new ColorDrawable(Color.GREEN));
         //lv.setDividerHeight(3);
+
+        /*//ListActivity
+        data = new ArrayList<String>();
+        data.add("월");
+        data.add("화");
+        data.add("수");
+        data.add("목");
+        data.add("금");
+        data.add("토");
+        data.add("일");
+
+        adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, data);
+        setListAdapter(adapter);*/
+
+        setContentView(R.layout.activity_main);
+
+        adapter = ArrayAdapter.createFromResource(this, R.array.travelArea, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinner = (Spinner) findViewById(R.id.sp_01);
+        spinner.setPrompt(getString(R.string.travel_select));
+        spinner.setAdapter(adapter);
 
     }
 

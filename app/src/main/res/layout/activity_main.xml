@@ -2,9 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ff0000"
     android:orientation="vertical"
-    android:weightSum="1"
     tools:context=".MainActivity">
 
     <!--    <Button
@@ -39,26 +37,40 @@
             android:password="true"
             android:textStyle="bold|italic" />-->
 
-    <ImageView
+    <!--    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/sba_img" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:background="#ff0000"
+            android:maxHeight="100px"
+            android:maxWidth="50px"
+            android:src="@drawable/sba_img" />
+
+        <ImageView
+            android:layout_width="200px"
+            android:layout_height="200px"
+            android:background="#ff0000"
+            android:scaleType="matrix"
+            android:src="@drawable/sba_img" />-->
+
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/sba_img" />
+        android:padding="10px"
+        android:text="@string/travel_select" />
 
-    <ImageView
+    <Spinner
+        android:id="@+id/sp_01"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:background="#ff0000"
-        android:maxHeight="100px"
-        android:maxWidth="50px"
-        android:src="@drawable/sba_img" />
-
-    <ImageView
-        android:layout_width="200px"
-        android:layout_height="200px"
-        android:background="#ff0000"
-        android:scaleType="matrix"
-        android:src="@drawable/sba_img" />
+        android:background="#00ff00"
+        android:padding="10px" />
 
 
 </LinearLayout>
