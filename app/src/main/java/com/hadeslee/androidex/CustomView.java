@@ -1,57 +1,85 @@
 package com.hadeslee.androidex;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapShader;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Shader;
-import android.graphics.drawable.BitmapDrawable;
-import android.view.View;
+import java.util.*;
 
-/**
- * Created by sklee on 2015-05-20.
- */
+import android.content.*;
+import android.graphics.*;
+import android.util.*;
+import android.view.*;
+
 public class CustomView extends View {
 
-    public CustomView(Context context) {
-        super(context);
-    }
+	public final static int CURRENT_CANVAS = 0;
+	public final static int NEW_CAVAS = 1;
 
-    @Override
-    protected void onDraw(Canvas canvas) {
-        //super.onDraw(canvas);
+	private Context mContext;
+	ArrayList<Dot> dots = new ArrayList<Dot>();
+	private Paint paint;
 
-/*      canvas.drawColor(Color.GRAY);
+	public CustomView(Context context) {
+		super(context);
+		initPaint(CustomView.CURRENT_CANVAS);
+	}
 
-        Paint paint = new Paint();
-        paint.setColor(Color.RED);
-        canvas.drawPoint(110, 110, paint);
+	public CustomView(Context context, AttributeSet attributeSet) {
+		super(context, attributeSet);
+		initPaint(CustomView.CURRENT_CANVAS);
+	}
 
-        paint.setColor(Color.YELLOW);
-        canvas.drawLine(50, 50, 100, 100, paint);
+	public CustomView(Context context, AttributeSet attributeSet, int defStyle) {
+		super(context, attributeSet, defStyle);
+		initPaint(CustomView.CURRENT_CANVAS);
+	}
 
-        paint.setColor(Color.BLUE);
-        canvas.drawRect(150, 10, 250, 150, paint);
+	public void setmContext(Context mContext) {
+		this.mContext = mContext;
+	}
 
-        paint.setColor(0x5000ffff);
-        canvas.drawCircle(200, 200, 100, paint);*/
+	@Override
+	protected void onDraw(Canvas canvas) {
+		// super.onDraw(canvas);
 
-        //canvas.drawColor(Color.LTGRAY);
-        Paint paint = new Paint();
-        paint.setAntiAlias(true);
+		canvas.drawColor(Color.WHITE);
 
- /*       Resources resources = getResources();
-        BitmapDrawable bitmapDrawable = (BitmapDrawable) resources.getDrawable(R.drawable.wiz);
-        Bitmap bitmap = bitmapDrawable.getBitmap();*/
+		for (int i = 0; i < dots.size(); i++) {
 
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.pt);
-        //canvas.drawBitmap(bitmap, 5, 5, null);
-        paint.setShader(new BitmapShader(bitmap, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT));
-        canvas.drawRect(10, 10, 200, 200, paint);
+			if (dots.get(i).isB()) {
+				canvas.drawLine(dots.get(i - 1).getX(), dots.get(i - 1).getY(),
+						dots.get(i).getX(), dots.get(i).getY(), paint);
+			}
 
-    }
+		}
+
+	}
+
+	public void initPaint(int i) {
+
+		dots.clear();
+		paint = null;
+		paint = new Paint();
+		paint.setColor(Color.GREEN);
+		paint.setStrokeWidth(2);
+		paint.setAntiAlias(true);
+		
+		if(i == CustomView.NEW_CAVAS) invalidate();
+
+	}
+
+	@Override
+	public boolean onTouchEvent(MotionEvent event) {
+
+		if (event.getAction() == MotionEvent.ACTION_DOWN) {
+			dots.add(new Dot(event.getX(), event.getY(), false));
+			return true;
+		}
+
+		if (event.getAction() == MotionEvent.ACTION_MOVE) {
+			dots.add(new Dot(event.getX(), event.getY(), true));
+			invalidate();
+			return true;
+		}
+
+		return false;
+	}
+
 }
