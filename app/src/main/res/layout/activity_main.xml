@@ -1,105 +1,17 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl01"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.android_13_3_ex1.MainActivity" >
 
-    <!--    <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginLeft="50px"
-            android:paddingLeft="100px"
-            android:text="B01" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#0000ff"
-            android:padding="20px"
-            android:text="ABCDEFG"
-            android:textColor="#ffffff"
-            android:textSize="20px"
-            android:textStyle="bold|italic" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="please input User Id"
-            android:textStyle="bold|italic" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="please input User Pw"
-            android:password="true"
-            android:textStyle="bold|italic" />-->
-
-    <!--    <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/sba_img" />
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:background="#ff0000"
-            android:maxHeight="100px"
-            android:maxWidth="50px"
-            android:src="@drawable/sba_img" />
-
-        <ImageView
-            android:layout_width="200px"
-            android:layout_height="200px"
-            android:background="#ff0000"
-            android:scaleType="matrix"
-            android:src="@drawable/sba_img" />-->
-
-<!--
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10px"
-        android:text="@string/travel_select" />
-
-    <Spinner
-        android:id="@+id/sp_01"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#00ff00"
-        android:padding="10px" />-->
-
-    <GridView
-        android:id="@+id/gv_01"
-        android:layout_width="match_parent"
-        android:layout_height="200px"
-        android:gravity="center"
-        android:horizontalSpacing="3px"
-        android:numColumns="2"
-        android:padding="3px"
-        android:verticalSpacing="3px"
-        android:background="#00ff00" />
-
-    <HorizontalScrollView
-        android:id="@+id/hsv_01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:spacing="10px"
-        android:paddingLeft="10px"
-        android:paddingRight="10px"
-        android:layout_marginTop="5px"
-        android:background="#0000ff" >
+        android:text="@string/hello_world" />
 
-        <LinearLayout
-            android:id="@+id/ll_01"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
-        </LinearLayout>
-    </HorizontalScrollView>
-
-
-</LinearLayout>
+</RelativeLayout>

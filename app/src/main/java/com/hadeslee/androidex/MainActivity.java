@@ -4,42 +4,49 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 
 public class MainActivity extends Activity {
 
-    private int[] data = {R.drawable.s01, R.drawable.s02,
-            R.drawable.s03, R.drawable.s04, R.drawable.s05};
-
-    private CustomAdapter adapter = null;
-    private GridView gv;
-
-    private LinearLayout ll;
-    private ImageView[] ivs;
+    RelativeLayout rl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        adapter = new CustomAdapter(this, data);
-        gv = (GridView) findViewById(R.id.gv_01);
-        gv.setAdapter(adapter);
+        rl = (RelativeLayout) findViewById(R.id.rl01);
+//		rl.setOnClickListener(clickListener);
+        rl.setOnLongClickListener(longClickListener);
 
-        ll = (LinearLayout) findViewById(R.id.ll_01);
-        ivs = new ImageView[5];
+        rl.setOnClickListener(new View.OnClickListener() {
 
-        for (int i = 0; i < 5; i++) {
-            ivs[i] = new ImageView(this);
-            ivs[i].setImageResource(data[i]);
-            ll.addView(ivs[i]);
-        }
-
-
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "onClick()", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
+
+//	OnClickListener clickListener = new OnClickListener() {
+//
+//		@Override
+//		public void onClick(View v) {
+//			Toast.makeText(MainActivity.this, "onClick()", Toast.LENGTH_SHORT).show();
+//		}
+//	};
+
+    View.OnLongClickListener longClickListener = new View.OnLongClickListener() {
+
+        @Override
+        public boolean onLongClick(View v) {
+            Toast.makeText(MainActivity.this, "onLongClick()", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+    };
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -54,12 +61,9 @@ public class MainActivity extends Activity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 }
