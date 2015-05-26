@@ -18,7 +18,11 @@
         </activity>
         <activity
             android:name=".SecondActivity"
-            android:label="@string/second_activity_name" >
+            android:label="secondActivity" >
+        </activity>
+        <activity
+            android:name=".ThirdActivity"
+            android:label="thirdActivity" >
         </activity>
     </application>
 

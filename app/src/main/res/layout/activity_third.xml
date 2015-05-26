@@ -5,12 +5,12 @@
     android:orientation="vertical" >
     
     <TextView 
-        android:id="@+id/tv_second"
+        android:id="@+id/tv_third"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10px"
         android:layout_marginBottom="10px"
-        android:text="SecondActivity"/>
+        android:text="ThirdActivity"/>
     
     <Button 
         android:id="@+id/bt_go_main"
