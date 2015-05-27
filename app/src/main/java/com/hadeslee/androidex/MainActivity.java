@@ -2,6 +2,9 @@ package com.hadeslee.androidex;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -9,7 +12,10 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
+
 public class MainActivity extends Activity {
+
+    final static String TAG = "MainActivity";
 
     private int mainNum;
     private int secondNum;
@@ -37,9 +43,9 @@ public class MainActivity extends Activity {
     private void startNum() {
         mainNum++;
 
-        //NewThread newThread = new NewThread();
-        SecondRunnable runnable = new SecondRunnable();
-        Thread newThread = new Thread(runnable);
+        NewThread newThread = new NewThread();
+        //SecondRunnable runnable = new SecondRunnable();
+        //Thread newThread = new Thread(runnable);
         newThread.setDaemon(true);
         newThread.start();
 
@@ -48,7 +54,37 @@ public class MainActivity extends Activity {
 
     }
 
-    class SecondRunnable implements Runnable {
+    Handler mainHandler = new Handler() {
+        public void handleMessage(Message msg) {
+            if (msg.what == 0) {
+                tvSecond.setText("secondNum : " + secondNum);
+                Log.i(TAG, "secondNum in handler : " + secondNum);
+            }
+        }
+    };
+
+    class NewThread extends Thread {
+        @Override
+        public void run() {
+            while (true) {
+                secondNum++;
+                Log.i(TAG, "secondNum in handler : " + secondNum);
+                try {
+                    Thread.sleep(500);
+                } catch (Exception e) {
+                }
+                Message msg = Message.obtain();
+                msg.what = 0;
+                msg.arg1 = 0;
+                msg.arg2 = 0;
+                msg.obj = null;
+                mainHandler.sendMessage(msg);
+
+            }
+        }
+    }
+
+/*    class SecondRunnable implements Runnable {
         @Override
         public void run() {
             while (true) {
@@ -59,7 +95,7 @@ public class MainActivity extends Activity {
                 }
             }
         }
-    }
+    }*/
 
 /*    class NewThread extends Thread {
         @Override
