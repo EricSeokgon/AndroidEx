@@ -1,9 +1,7 @@
 package com.hadeslee.androidex;
 
 import android.app.Activity;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
+import android.os.*;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,7 +9,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-
 
 public class MainActivity extends Activity {
 
@@ -42,28 +39,25 @@ public class MainActivity extends Activity {
 
     private void startNum() {
         mainNum++;
+        tvMain.setText("mainNum : " + mainNum);
 
-        NewThread newThread = new NewThread();
-        //SecondRunnable runnable = new SecondRunnable();
-        //Thread newThread = new Thread(runnable);
+        NewThread newThread = new NewThread(mainHandler, secondNum);
         newThread.setDaemon(true);
         newThread.start();
 
-        tvMain.setText("mainNum : " + mainNum);
-        tvSecond.setText("secondNum : " + secondNum);
-
     }
 
-/*    Handler mainHandler = new Handler() {
+    Handler mainHandler = new Handler() {
         public void handleMessage(Message msg) {
-            if (msg.what == 0) {
+            if (msg.what == NewThread.NEWTHREAD_WHAT) {
+                secondNum = msg.arg1;
                 tvSecond.setText("secondNum : " + secondNum);
                 Log.i(TAG, "secondNum in handler : " + secondNum);
             }
         }
-    };*/
+    };
 
-    class NewThread extends Thread {
+/*    class NewThread extends Thread {
         @Override
         public void run() {
             while (true) {
@@ -80,16 +74,16 @@ public class MainActivity extends Activity {
                     Thread.sleep(500);
                 } catch (Exception e) {
                 }
-/*                Message msg = Message.obtain();
+*//*                Message msg = Message.obtain();
                 msg.what = 0;
                 msg.arg1 = 0;
                 msg.arg2 = 0;
                 msg.obj = null;
-                mainHandler.sendMessage(msg);*/
+                mainHandler.sendMessage(msg);*//*
 
             }
         }
-    }
+    }*/
 
 /*    class SecondRunnable implements Runnable {
         @Override
