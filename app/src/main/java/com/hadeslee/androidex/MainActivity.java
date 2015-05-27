@@ -37,7 +37,9 @@ public class MainActivity extends Activity {
     private void startNum() {
         mainNum++;
 
-        NewThread newThread = new NewThread();
+        //NewThread newThread = new NewThread();
+        SecondRunnable runnable = new SecondRunnable();
+        Thread newThread = new Thread(runnable);
         newThread.setDaemon(true);
         newThread.start();
 
@@ -46,7 +48,7 @@ public class MainActivity extends Activity {
 
     }
 
-    class NewThread extends Thread {
+    class SecondRunnable implements Runnable {
         @Override
         public void run() {
             while (true) {
@@ -58,6 +60,19 @@ public class MainActivity extends Activity {
             }
         }
     }
+
+/*    class NewThread extends Thread {
+        @Override
+        public void run() {
+            while (true) {
+                secondNum++;
+                try {
+                    Thread.sleep(500);
+                } catch (Exception e) {
+                }
+            }
+        }
+    }*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
