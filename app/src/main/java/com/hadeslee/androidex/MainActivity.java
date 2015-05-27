@@ -1,21 +1,16 @@
 package com.hadeslee.androidex;
 
-import android.app.Activity;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
+import android.os.*;
+import android.support.v7.app.*;
+import android.view.*;
 import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.TextView;
+import android.widget.*;
 
-public class MainActivity extends Activity {
-
+public class MainActivity extends ActionBarActivity {
 
     TextView tv;
-    Button btn01;
+    Button btn01, btn02;
     NewAsyncTask newAsynTask;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,77 +23,23 @@ public class MainActivity extends Activity {
     }
 
     OnClickListener listener = new OnClickListener() {
+
         @Override
         public void onClick(View v) {
+            // TODO Auto-generated method stub
             switch (v.getId()) {
                 case R.id.bt_01:
                     newAsynTask = new NewAsyncTask(MainActivity.this, tv);
                     newAsynTask.execute(100, 50);
                     break;
-
             }
         }
     };
 
-
-/*    class NewThread extends Thread {
-        @Override
-        public void run() {
-            while (true) {
-                secondNum++;
-                Log.i(TAG, "secondNum in handler : " + secondNum);
-
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        tvSecond.setText("secondNum : " + secondNum);
-                    }
-                });
-                try {
-                    Thread.sleep(500);
-                } catch (Exception e) {
-                }
-*//*                Message msg = Message.obtain();
-                msg.what = 0;
-                msg.arg1 = 0;
-                msg.arg2 = 0;
-                msg.obj = null;
-                mainHandler.sendMessage(msg);*//*
-
-            }
-        }
-    }*/
-
-/*    class SecondRunnable implements Runnable {
-        @Override
-        public void run() {
-            while (true) {
-                secondNum++;
-                try {
-                    Thread.sleep(500);
-                } catch (Exception e) {
-                }
-            }
-        }
-    }*/
-
-/*    class NewThread extends Thread {
-        @Override
-        public void run() {
-            while (true) {
-                secondNum++;
-                try {
-                    Thread.sleep(500);
-                } catch (Exception e) {
-                }
-            }
-        }
-    }*/
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        //	getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
