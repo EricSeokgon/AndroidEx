@@ -54,14 +54,14 @@ public class MainActivity extends Activity {
 
     }
 
-    Handler mainHandler = new Handler() {
+/*    Handler mainHandler = new Handler() {
         public void handleMessage(Message msg) {
             if (msg.what == 0) {
                 tvSecond.setText("secondNum : " + secondNum);
                 Log.i(TAG, "secondNum in handler : " + secondNum);
             }
         }
-    };
+    };*/
 
     class NewThread extends Thread {
         @Override
@@ -69,16 +69,23 @@ public class MainActivity extends Activity {
             while (true) {
                 secondNum++;
                 Log.i(TAG, "secondNum in handler : " + secondNum);
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        tvSecond.setText("secondNum : " + secondNum);
+                    }
+                });
                 try {
                     Thread.sleep(500);
                 } catch (Exception e) {
                 }
-                Message msg = Message.obtain();
+/*                Message msg = Message.obtain();
                 msg.what = 0;
                 msg.arg1 = 0;
                 msg.arg2 = 0;
                 msg.obj = null;
-                mainHandler.sendMessage(msg);
+                mainHandler.sendMessage(msg);*/
 
             }
         }
