@@ -1,12 +1,11 @@
 package com.hadeslee.androidex;
 
-import android.app.*;
-import android.content.*;
-import android.content.DialogInterface.OnClickListener;
-import android.database.CursorJoiner.Result;
-import android.os.*;
-import android.util.*;
-import android.widget.*;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.os.AsyncTask;
+import android.util.Log;
+import android.widget.TextView;
 
 /**
  * Created by sklee on 2015-05-27.
