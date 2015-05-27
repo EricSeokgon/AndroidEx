@@ -10,19 +10,19 @@
     tools:context="com.example.android_16_4_ex1.MainActivity" >
 
     <TextView
-        android:id="@+id/tv_main"
+        android:id="@+id/tv_main_thead"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="MainActivity" />
-    
-    <Button 
-        android:id="@+id/bt_go_second"
+        android:text="mainNum" />
+
+    <TextView
+        android:id="@+id/tv_second_thread"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Go SecondActivity"/>
+        android:text="secondNum" />
     
     <Button 
-        android:id="@+id/bt_go_third"
+        android:id="@+id/bt_start"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Go ThirdActivity"/>
