@@ -1,8 +1,7 @@
 package com.hadeslee.androidex;
 
 import android.app.Activity;
-import android.os.*;
-import android.util.Log;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,12 +11,10 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
-    final static String TAG = "MainActivity";
 
-    private int mainNum;
-    private int secondNum;
-    private TextView tvMain, tvSecond;
-    private Button btnStart;
+    TextView tv;
+    Button btn01;
+    NewAsyncTask newAsynTask;
 
 
     @Override
@@ -25,37 +22,24 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        tvMain = (TextView) findViewById(R.id.tv_main_thead);
-        tvSecond = (TextView) findViewById(R.id.tv_second_thread);
-        btnStart = (Button) findViewById(R.id.bt_start);
-
-        btnStart.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startNum();
-            }
-        });
+        tv = (TextView) findViewById(R.id.tv_01);
+        btn01 = (Button) findViewById(R.id.bt_01);
+        btn01.setOnClickListener(listener);
     }
 
-    private void startNum() {
-        mainNum++;
-        tvMain.setText("mainNum : " + mainNum);
+    OnClickListener listener = new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.bt_01:
+                    newAsynTask = new NewAsyncTask(MainActivity.this, tv);
+                    newAsynTask.execute(100, 50);
+                    break;
 
-        NewThread newThread = new NewThread(mainHandler, secondNum);
-        newThread.setDaemon(true);
-        newThread.start();
-
-    }
-
-    Handler mainHandler = new Handler() {
-        public void handleMessage(Message msg) {
-            if (msg.what == NewThread.NEWTHREAD_WHAT) {
-                secondNum = msg.arg1;
-                tvSecond.setText("secondNum : " + secondNum);
-                Log.i(TAG, "secondNum in handler : " + secondNum);
             }
         }
     };
+
 
 /*    class NewThread extends Thread {
         @Override

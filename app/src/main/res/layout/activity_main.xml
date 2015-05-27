@@ -10,26 +10,18 @@
     tools:context="com.example.android_16_4_ex1.MainActivity" >
 
     <TextView
-        android:id="@+id/tv_main_thead"
+        android:id="@+id/tv_01"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="mainNum :"
-        android:autoText="false"
-        android:textColor="#ffff0000"
-        android:textSize="20dp" />
+        android:textColor="#ff000000"
+        android:textStyle="bold|italic"
+        android:textSize="38dp" />
 
-    <TextView
-        android:id="@+id/tv_second_thread"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="secondNum :"
-        android:textColor="#ff00ff00"
-        android:textSize="20dp" />
-    
+
     <Button 
-        android:id="@+id/bt_start"
+        android:id="@+id/bt_01"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Go ThirdActivity"/>
+        android:text="Button01"/>
 
 </LinearLayout>
