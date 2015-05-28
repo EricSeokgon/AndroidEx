@@ -1,0 +1,24 @@
+<members_info>
+	<member name="hong gil dong" age="20">
+		<hobbys>
+			<hobby>수영</hobby>
+			<hobby>요리</hobby>
+		</hobbys>
+		<info>
+			<no>1</no>
+			<id>abcd</id>
+			<pw>1234</pw>
+		</info>
+	</member>
+	<member name="hong gil soon" age="30">
+		<hobbys>
+			<hobby>독서</hobby>
+			<hobby>등산</hobby>
+		</hobbys>
+		<info>
+			<no>2</no>
+			<id>efgh</id>
+			<pw>5678</pw>
+		</info>
+	</member>
+</members_info>
