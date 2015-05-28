@@ -8,5 +8,6 @@
     <string name="go_second_activity">go_second_activity</string>
     <string name="go_main_activity">go_main_activity</string>
     <string name="second_activity_name">second_activity_name</string>
+    <string name="title_activity_maps">Map</string>
 
 </resources>
