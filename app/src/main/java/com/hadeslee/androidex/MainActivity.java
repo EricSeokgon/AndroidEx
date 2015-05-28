@@ -1,14 +1,17 @@
 package com.hadeslee.androidex;
 
-import java.io.*;
-import java.util.*;
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 
-import org.xmlpull.v1.*;
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserFactory;
 
-import android.os.*;
-import android.support.v7.app.*;
-import android.util.*;
-import android.view.*;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -26,33 +29,55 @@ public class MainActivity extends ActionBarActivity {
     private void parser() {
         Log.i(TAG, "parser()");
 
-        InputStream is = getResources().openRawResource(R.raw.tokenex);
+        InputStream is = getResources().openRawResource(R.raw.xmlex);
         InputStreamReader isr = new InputStreamReader(is);
         BufferedReader reader = new BufferedReader(isr);
 
         StringBuffer sb = new StringBuffer();
         String line = null;
+
+        XmlPullParserFactory factory = null;
+        XmlPullParser xmlPullParser = null;
         try {
 
-            while ((line = reader.readLine()) != null) {
-                sb.append(line);
-            }
-            Log.i(TAG, "sb : " + sb.toString());
+            factory = XmlPullParserFactory.newInstance();
+            xmlPullParser = factory.newPullParser();
+            xmlPullParser.setInput(reader);
 
-            String str = sb.toString();
-            StringTokenizer tokenizer = new StringTokenizer(str, "|");
-            Log.i(TAG, "Token count : " + tokenizer.countTokens());
-            while(tokenizer.hasMoreElements()){
-                String tokenStr = tokenizer.nextToken();
-                Log.i(TAG, "Token string(|) : " + tokenStr);
+            int eventType = xmlPullParser.getEventType();
 
-                StringTokenizer tokenizer2 = new StringTokenizer(tokenStr, ",");
-                Log.i(TAG, "Token count : " + tokenizer2.countTokens());
-                while (tokenizer2.hasMoreElements()) {
-                    String tokenStr2 = tokenizer2.nextToken();
-                    Log.i(TAG, "Token string(,) : " + tokenStr2);
+            while (eventType != XmlPullParser.END_DOCUMENT) {
+
+                switch (eventType) {
+                    case XmlPullParser.START_DOCUMENT:
+                        Log.i(TAG, "Start Document");
+                        break;
+
+                    case XmlPullParser.START_TAG:
+                        Log.i(TAG, "Start TAG : " + xmlPullParser.getName());
+
+                        if (xmlPullParser.getName().equals("member")) {
+                            int count = xmlPullParser.getAttributeCount();
+                            for (int i = 0; i < count; i++) {
+                                Log.i(TAG, "Start TAG AttributeName(" + i + ") : "
+                                        + xmlPullParser.getAttributeName(i));
+                                Log.i(TAG, "Start TAG AttributeValue(" + i + ") : "
+                                        + xmlPullParser.getAttributeValue(i));
+                            }
+                        }
+                        break;
+
+                    case XmlPullParser.END_TAG:
+                        Log.i(TAG, "End TAG : " + xmlPullParser.getName());
+                        break;
+
+                    case XmlPullParser.TEXT:
+                        Log.i(TAG, "TEXT : " + xmlPullParser.getText());
+                        break;
                 }
-                Log.i(TAG, "===============================================");
+
+                eventType = xmlPullParser.next();
+
             }
 
         } catch (Exception e) {
