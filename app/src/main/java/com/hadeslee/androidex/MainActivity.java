@@ -1,40 +1,76 @@
 package com.hadeslee.androidex;
 
+import java.io.*;
+import java.util.*;
+
+import org.xmlpull.v1.*;
+
 import android.os.*;
 import android.support.v7.app.*;
+import android.util.*;
 import android.view.*;
-import android.view.View.OnClickListener;
-import android.widget.*;
 
 public class MainActivity extends ActionBarActivity {
 
-    TextView tv;
-    Button btn01, btn02;
-    NewAsyncTask newAsynTask;
+    final static String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        tv = (TextView) findViewById(R.id.tv_01);
-        btn01 = (Button) findViewById(R.id.bt_01);
-        btn01.setOnClickListener(listener);
+        parser();
+
     }
 
-    OnClickListener listener = new OnClickListener() {
+    private void parser() {
+        Log.i(TAG, "parser()");
 
-        @Override
-        public void onClick(View v) {
-            // TODO Auto-generated method stub
-            switch (v.getId()) {
-                case R.id.bt_01:
-                    newAsynTask = new NewAsyncTask(MainActivity.this, tv);
-                    newAsynTask.execute(100, 50);
-                    break;
+        InputStream is = getResources().openRawResource(R.raw.tokenex);
+        InputStreamReader isr = new InputStreamReader(is);
+        BufferedReader reader = new BufferedReader(isr);
+
+        StringBuffer sb = new StringBuffer();
+        String line = null;
+        try {
+
+            while ((line = reader.readLine()) != null) {
+                sb.append(line);
+            }
+            Log.i(TAG, "sb : " + sb.toString());
+
+            String str = sb.toString();
+            StringTokenizer tokenizer = new StringTokenizer(str, "|");
+            Log.i(TAG, "Token count : " + tokenizer.countTokens());
+            while(tokenizer.hasMoreElements()){
+                String tokenStr = tokenizer.nextToken();
+                Log.i(TAG, "Token string(|) : " + tokenStr);
+
+                StringTokenizer tokenizer2 = new StringTokenizer(tokenStr, ",");
+                Log.i(TAG, "Token count : " + tokenizer2.countTokens());
+                while (tokenizer2.hasMoreElements()) {
+                    String tokenStr2 = tokenizer2.nextToken();
+                    Log.i(TAG, "Token string(,) : " + tokenStr2);
+                }
+                Log.i(TAG, "===============================================");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (reader != null)
+                    reader.close();
+                if (isr != null)
+                    isr.close();
+                if (is != null)
+                    is.close();
+            } catch (Exception e2) {
+                e2.printStackTrace();
             }
         }
-    };
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
