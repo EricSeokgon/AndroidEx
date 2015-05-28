@@ -1,0 +1,24 @@
+﻿{
+	"members_info" : [
+		{
+			"name" : "hong gil dong",
+			"age" : 20,
+			"hobbys" : ["수영", "요리"],
+			"info" : {
+				"no" : 1,
+				"id" : "abcd",
+				"pw" : 1234
+			}
+		},
+		{
+			"name" : "hong gil soon",
+			"age" : 30,
+			"hobbys" : ["독서", "등산"],
+			"info" : {
+				"no" : 2,
+				"id" : "efgh",
+				"pw" : 5678
+			}
+		}
+	]
+}
