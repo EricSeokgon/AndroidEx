@@ -1,17 +1,14 @@
 package com.hadeslee.androidex;
 
-import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
+import java.io.*;
+import java.util.*;
 
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserFactory;
+import org.json.*;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import android.os.*;
+import android.support.v7.app.*;
+import android.util.*;
+import android.view.*;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -22,62 +19,96 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        parser();
+        parser2();
 
     }
 
     private void parser() {
         Log.i(TAG, "parser()");
 
-        InputStream is = getResources().openRawResource(R.raw.xmlex);
+        InputStream is = getResources().openRawResource(R.raw.jsonex);
         InputStreamReader isr = new InputStreamReader(is);
         BufferedReader reader = new BufferedReader(isr);
 
         StringBuffer sb = new StringBuffer();
         String line = null;
-
-        XmlPullParserFactory factory = null;
-        XmlPullParser xmlPullParser = null;
         try {
+            while ((line = reader.readLine()) != null) {
+                sb.append(line);
+            }
+            Log.i(TAG, "sb : " + sb.toString());
 
-            factory = XmlPullParserFactory.newInstance();
-            xmlPullParser = factory.newPullParser();
-            xmlPullParser.setInput(reader);
+            JSONObject jsonObject = new JSONObject(sb.toString());
+            String name = jsonObject.getString("name");
+            Log.i(TAG, "name : " + name);
+            int age = jsonObject.getInt("age");
+            Log.i(TAG, "age : " + age);
+            JSONArray jsonArray = jsonObject.getJSONArray("hobbys");
+            for (int i = 0; i < jsonArray.length(); i++) {
+                String hobby = jsonArray.getString(i);
+                Log.i(TAG, "hobbys[" + i + "] : " + hobby);
+            }
+            JSONObject jsonObject2 = jsonObject.getJSONObject("info");
+            int no = jsonObject2.getInt("no");
+            Log.i(TAG, "no : " + no);
+            String id = jsonObject2.getString("id");
+            Log.i(TAG, "id : " + id);
+            int pw = jsonObject2.getInt("pw");
+            Log.i(TAG, "pw : " + pw);
 
-            int eventType = xmlPullParser.getEventType();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (reader != null)
+                    reader.close();
+                if (isr != null)
+                    isr.close();
+                if (is != null)
+                    is.close();
+            } catch (Exception e2) {
+                e2.printStackTrace();
+            }
+        }
 
-            while (eventType != XmlPullParser.END_DOCUMENT) {
+    }
 
-                switch (eventType) {
-                    case XmlPullParser.START_DOCUMENT:
-                        Log.i(TAG, "Start Document");
-                        break;
+    private void parser2() {
+        Log.i(TAG, "parser()2");
 
-                    case XmlPullParser.START_TAG:
-                        Log.i(TAG, "Start TAG : " + xmlPullParser.getName());
+        InputStream is = getResources().openRawResource(R.raw.jsonex2);
+        InputStreamReader isr = new InputStreamReader(is);
+        BufferedReader reader = new BufferedReader(isr);
 
-                        if (xmlPullParser.getName().equals("member")) {
-                            int count = xmlPullParser.getAttributeCount();
-                            for (int i = 0; i < count; i++) {
-                                Log.i(TAG, "Start TAG AttributeName(" + i + ") : "
-                                        + xmlPullParser.getAttributeName(i));
-                                Log.i(TAG, "Start TAG AttributeValue(" + i + ") : "
-                                        + xmlPullParser.getAttributeValue(i));
-                            }
-                        }
-                        break;
+        StringBuffer sb = new StringBuffer();
+        String line = null;
+        try {
+            while ((line = reader.readLine()) != null) {
+                sb.append(line);
+            }
+            Log.i(TAG, "sb : " + sb.toString());
 
-                    case XmlPullParser.END_TAG:
-                        Log.i(TAG, "End TAG : " + xmlPullParser.getName());
-                        break;
+            JSONObject jsonObject = new JSONObject(sb.toString());
+            JSONArray jsonArray = new JSONArray(jsonObject.getString("members_info"));
 
-                    case XmlPullParser.TEXT:
-                        Log.i(TAG, "TEXT : " + xmlPullParser.getText());
-                        break;
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject jsonObject1 = (JSONObject) jsonArray.get(i);
+                String name = jsonObject1.getString("name");
+                Log.i(TAG, "name : " + name);
+                int age = jsonObject1.getInt("age");
+                Log.i(TAG, "age : " + age);
+                JSONArray jsonArray2 = jsonObject1.getJSONArray("hobbys");
+                for (int j = 0; j < jsonArray2.length(); j++) {
+                    String hobby = jsonArray2.getString(j);
+                    Log.i(TAG, "hobbys[" + j + "] : " + hobby);
                 }
-
-                eventType = xmlPullParser.next();
-
+                JSONObject jsonObject2 = jsonObject1.getJSONObject("info");
+                int no = jsonObject2.getInt("no");
+                Log.i(TAG, "no : " + no);
+                String id = jsonObject2.getString("id");
+                Log.i(TAG, "id : " + id);
+                int pw = jsonObject2.getInt("pw");
+                Log.i(TAG, "pw : " + pw);
             }
 
         } catch (Exception e) {
